@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1082
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixTest", "MatrixTest\MatrixTest.vcxproj", "{90398B29-28B0-46D2-B648-0CC9E1A02004}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixTest", "MatrixTest.vcxproj", "{90398B29-28B0-46D2-B648-0CC9E1A02004}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3B59E248-ED29-4963-B93E-F0638DBCF61C}
+		SolutionGuid = {236E2B89-B9B1-47E6-A58C-21D2B8EE4357}
 	EndGlobalSection
 EndGlobal
