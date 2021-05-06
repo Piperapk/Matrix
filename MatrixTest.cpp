@@ -5,6 +5,8 @@ using namespace std;
 
 int main()
 {
-	Matrix<int> aMatrixInt;
 	cout << "Does class Matrix<int> work? " << boolalpha << matrixTest<int>();
+
+	Matrix<int> aMatrixInt{1, 3, 19};
+	aMatrixInt.matrixPrint();
 }

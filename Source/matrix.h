@@ -9,6 +9,7 @@ class Matrix
 {
 public:
 	Matrix(size_t rows = 0, size_t columns = 0);
+	Matrix(size_t rows, size_t columns, const T fillValue); //Constructor and single value initialiser
 	Matrix(const Matrix& matrixToCopy); //Copy constructor
 	Matrix(Matrix&& matrixToCopy) noexcept; //Move constructor
 	~Matrix();
@@ -50,6 +51,16 @@ Matrix<T>::Matrix(size_t rows, size_t columns)
 {
 	//Allocate memory for the new matrix, initialize all elements to 0;
 	m_Matrix = new T[rows * columns]();
+}
+
+//Constructor and single value initialiser
+template <typename T>
+Matrix<T>::Matrix(size_t rows, size_t columns, const T fillValue)
+	:m_Rows(rows), m_Columns(columns)
+{
+	//Allocate memory for the new matrix, initialize all elements to 0;
+	m_Matrix = new T[rows * columns]();
+	matrixPopulateUniform(fillValue);
 }
 
 //Copy constructor
