@@ -2,6 +2,7 @@
 #define MATRIX_H
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 template <typename T>
@@ -10,6 +11,7 @@ class Matrix
 public:
 	Matrix(size_t rows = 0, size_t columns = 0);
 	Matrix(size_t rows, size_t columns, const T fillValue); //Constructor and single value initialiser
+	Matrix(size_t rows, size_t columns, const vector<T>& fillVector); //Constructor and a vector initialiser
 	Matrix(const Matrix& matrixToCopy); //Copy constructor
 	Matrix(Matrix&& matrixToCopy) noexcept; //Move constructor
 	~Matrix();
@@ -35,6 +37,7 @@ public:
 	bool matrixCheckDimensionsMultiplication(const Matrix& mLeft, const Matrix& mRight);
 
 	void matrixPopulateUniform(T number);
+	void matrixPopulateVector(const vector<T>& fillVector);
 	void matrixPrint();
 	size_t getRows();
 	size_t getColumns();
@@ -61,6 +64,26 @@ Matrix<T>::Matrix(size_t rows, size_t columns, const T fillValue)
 	//Allocate memory for the new matrix, initialize all elements to 0;
 	m_Matrix = new T[rows * columns]();
 	matrixPopulateUniform(fillValue);
+}
+
+//Constructor and a vector initialiser
+template <typename T>
+Matrix<T>::Matrix(size_t rows, size_t columns, const vector<T>& fillVector)
+	:m_Rows(rows), m_Columns(columns)
+{
+	size_t vectorSize = fillVector.size();
+	if (rows * columns == vectorSize)
+	{
+		//Allocate memory for the new matrix, initialize all elements to 0;
+		m_Matrix = new T[rows * columns]();
+		matrixPopulateVector(fillVector);
+	}
+	else
+	{
+		m_Matrix = new T[0]{};
+		cout << "Vector elements not equal to the size of the Matrix" << endl;
+	}
+
 }
 
 //Copy constructor
@@ -356,6 +379,20 @@ void Matrix<T>::matrixPopulateUniform(T number)
 		for (size_t j = 0; j < m_Columns; j++)
 		{
 			(*this)(i, j) = number;
+		}
+	}
+}
+
+template <typename T>
+void Matrix<T>::matrixPopulateVector(const vector<T>& fillVector)
+{
+	size_t vectorIndex = 0;
+
+	for (size_t i = 0; i < m_Rows; i++)
+	{
+		for (size_t j = 0; j < m_Columns; j++, vectorIndex++)
+		{
+			(*this)(i, j) = fillVector[vectorIndex];
 		}
 	}
 }
